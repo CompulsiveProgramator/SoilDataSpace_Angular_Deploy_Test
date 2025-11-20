@@ -1,0 +1,82 @@
+{
+	"sections" : {
+		"Directivos": {
+			"Director del proyecto":{
+				"imagen":"assets/user.svg",
+				"nombre":"Juan Manuel Jurado",
+				"linkedin":""
+			},
+			"Coordinadora de equipos":{
+				"imagen":"assets/team/descarga.jpg",
+				"nombre":"Gloria Paterna",
+				"linkedin":""
+			}
+		},
+		"Equipo de ciencias ambientales": {
+			"Director caso de uso AGRO":{
+				"imagen":"assets/user.svg",
+				"nombre":"Pablo",
+				"linkedin":""
+			},
+			"Director caso de uso CLIMA":{
+				"imagen":"assets/user.svg",
+				"nombre":"Azahara",
+				"linkedin":""
+			},
+			"Director caso de uso HIDRO":{
+				"imagen":"assets/user.svg",
+				"nombre":"Andrea",
+				"linkedin":""
+			}
+		},
+		"Equipo de TI": {
+			"A":{
+				"imagen":"assets/user.svg",
+				"nombre":"Fran",
+				"linkedin":""
+			},
+			"B":{
+				"imagen":"assets/user.svg",
+				"nombre":"Gema",
+				"linkedin":""
+			},
+			"C":{
+				"imagen":"assets/user.svg",
+				"nombre":"Adrian",
+				"linkedin":""
+			},
+			"D":{
+				"imagen":"assets/user.svg",
+				"nombre":"Adrian",
+				"linkedin":""
+			},
+			"E":{
+				"imagen":"assets/user.svg",
+				"nombre":"Tobias",
+				"linkedin":""
+			},
+			"F":{
+				"imagen":"assets/user.svg",
+				"nombre":"Jorge",
+				"linkedin":""
+			},
+			"G":{
+				"imagen":"assets/user.svg",
+				"nombre":"Juan Antonio",
+				"linkedin":""
+			}
+		},
+		"Equipo de Geomática":{
+			"A":{
+				"imagen":"assets/user.svg",
+				"nombre":"Juan Antonio",
+				"linkedin":""
+			},
+			"B":{
+				"imagen":"assets/user.svg",
+				"nombre":"Gustavo",
+				"linkedin":""
+			}
+		}
+	}
+}

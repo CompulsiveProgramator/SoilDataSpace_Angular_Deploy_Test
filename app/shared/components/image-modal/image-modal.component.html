@@ -1,0 +1,19 @@
+<div *ngIf="isVisible" 
+  class="modal-backdrop"
+  (mousedown)="closeModal()"> <!--Uso mousedown porque click se activa cuando se levanta el click y eso da toc-->
+  <div 
+    (mousedown)="$event.stopPropagation()"
+    class="relative bg-white rounded-2xl shadow-2xl w-full max-w-3xl sm:max-w-4xl md:max-w-5xl 
+               overflow-hidden animate-fadeIn flex flex-col 
+               h-auto max-h-[90vh] sm:h-[85vh] 
+               overflow-y-auto mt-4 mb-4">
+    <button (click)="closeModal()" class="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-3xl font-bold leading-none z-10" id="close-modal">
+      <span class="relative flex items-center justify-center w-8 h-8 rounded-full bg-white shadow-md">
+      &times;
+      </span>
+    </button>
+
+    <div class="flex-grow overflow-y-auto text-gray-700 leading-relaxed">
+      <img [src]="Image" class="w-full h-fit object-center transition-transform duration-300">
+    </div>
+</div>

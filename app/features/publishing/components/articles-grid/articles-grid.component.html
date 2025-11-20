@@ -1,0 +1,32 @@
+<div class="flex justify-center">
+    <div class="grid gap-25 grid-cols-1 xl:grid-cols-2">
+        <div
+            *ngFor="let article of articlesList; let i = index"
+            class="rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300
+                    h-fit w-fit flex flex-col justify-between"
+        >
+            <app-articles-grid-card
+                [articlesItem]="article"
+                [articlesIndex]="i">
+            </app-articles-grid-card>
+
+            <div
+                *ngIf="hasMarketingPermission"
+                class="flex justify-end gap-1 p-2"
+            >
+                <button
+                    (click)="onEdit(article, i)"
+                    class="rounded-lg p-2 text-white font-semibold shadow-md bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 transition">
+                    Editar
+                </button>
+                <button
+                    (click)="onDelete(i)"
+                    class="rounded-lg p-2 text-white font-semibold shadow-md bg-gradient-to-r from-red-600 to-red-800 hover:from-red-700 hover:to-red-900 transition">
+                    Borrar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-articles-edit-form></app-articles-edit-form>

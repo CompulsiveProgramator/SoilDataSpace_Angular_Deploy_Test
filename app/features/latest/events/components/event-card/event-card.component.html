@@ -1,0 +1,105 @@
+<div *ngIf="eventItem"> <!-- Importante el IF para que no pete por asincronía -->
+    <!-- tarjeta pequeña -->
+    <article
+    *ngIf="cardType===cardTypes.SMALL"
+    (click)="showModal()"
+    class="group shrink-0 snap-start w-[380px] relative rounded-3xl p-1 transition-transform duration-300 hover:scale-[1.04] shadow-lg"
+    [ngClass]="'bg-gradient-to-r from-' + eventColorStyle.borderGradientColor + ' to-cyan-500'">
+        <div class="flex flex-col h-full rounded-[calc(1.5rem-4px)] bg-white/90 backdrop-blur-md overflow-hidden">
+            <div class="relative h-56 overflow-hidden flex-shrink-0">
+                <img [src]="getThumbnailImage()" [alt]="eventItem.title" class="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-110" />
+            </div>
+            <div class="flex flex-col justify-between p-4 flex-grow">
+                <div>
+                    <h3 class="text-xl sm:text-2xl font-extrabold leading-snug bg-clip-text text-transparent truncate max-w-lg"
+                        [ngClass]="'bg-gradient-to-r from-' + eventColorStyle.titleTextColor + ' to-cyan-700'">
+                        {{ eventItem.title }}
+                    </h3>
+                    <p class="text-gray-700 text-lg sm:text-lg leading-relaxed whitespace-pre-line truncate max-w-lg">
+                        {{ eventItem.content }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- tarjeta Mediana -->
+    <article
+    *ngIf="cardType===cardTypes.MEDIUM"
+    (click)="showModal()"
+    class="group shrink-0 snap-start w-[580px] h-[275px]  relative rounded-3xl p-1 transition-transform duration-300 hover:scale-[1.04] shadow-lg"
+    [ngClass]="'bg-gradient-to-r from-' + eventColorStyle.borderGradientColor + ' to-cyan-500'">
+        <div class="flex flex-col h-full rounded-[calc(1.5rem-4px)] bg-white/90 backdrop-blur-md overflow-hidden">
+            <div class="relative h-36 overflow-hidden flex-shrink-0">
+                <img [src]="getThumbnailImage()" [alt]="eventItem.title" class="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-110" />
+            </div>
+            <div class="flex flex-col justify-between p-4 flex-grow">
+                <div>
+                    <h3 class="text-xl sm:text-2xl font-extrabold leading-snug bg-clip-text text-transparent truncate max-w-lg"
+                        [ngClass]="'bg-gradient-to-r from-' + eventColorStyle.titleTextColor + ' to-cyan-700'">
+                        {{ eventItem.title }}
+                    </h3>
+                    <p class="text-gray-700 text-lg sm:text-lg leading-relaxed whitespace-pre-line truncate max-w-lg">
+                        {{ eventItem.content }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- tarjeta GRANDE -->
+    <article
+    *ngIf="cardType===cardTypes.BIG"
+    (click)="showModal()"
+    class="group shrink-0 snap-start w-[580px] h-[580px]  relative rounded-3xl p-1 transition-transform duration-300 hover:scale-[1.04] shadow-lg"
+    [ngClass]="'bg-gradient-to-r from-' + eventColorStyle.borderGradientColor + ' to-cyan-500'">
+        <div class="flex flex-col h-full rounded-[calc(1.5rem-4px)] bg-white/90 backdrop-blur-md overflow-hidden">
+            <div class="relative h-105 overflow-hidden flex-shrink-0">
+                <img [src]="getThumbnailImage()" [alt]="eventItem.title" class="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-110" />
+            </div>
+            <div class="flex flex-col justify-between p-4 flex-grow">
+                <div>
+                    <h3 class="text-xl sm:text-2xl font-extrabold leading-snug bg-clip-text text-transparent truncate max-w-lg"
+                        [ngClass]="'bg-gradient-to-r from-' + eventColorStyle.titleTextColor + ' to-cyan-700'">
+                        {{ eventItem.title }}
+                    </h3>
+                    <p class="text-gray-700 text-lg sm:text-lg leading-relaxed whitespace-pre-line truncate max-w-lg">
+                        {{ eventItem.content }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </article>
+</div>
+
+<!-- Tamaño muy pequeño para Móvil -->
+<article
+*ngIf="cardType===cardTypes.SUPER_SMALL"
+(click)="showModal()"
+class="group shrink-0 snap-start w-[300px] sm:w-[300px] md:w-[300px] relative rounded-3xl p-1 transition-transform duration-300 hover:scale-[1.04] shadow-lg"
+[ngClass]="'bg-gradient-to-r from-' + eventColorStyle.borderGradientColor + ' to-cyan-500'">
+    <div class="flex flex-col h-full rounded-[calc(1.5rem-4px)] bg-white/90 backdrop-blur-md overflow-hidden">
+        <div class="relative h-56 overflow-hidden flex-shrink-0">
+            <img [src]="getThumbnailImage()" [alt]="eventItem.title" class="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-110" />
+        </div>
+        <div class="flex flex-col justify-between p-4 flex-grow">
+            <div>
+                <h3 class="text-xl sm:text-2xl font-extrabold leading-snug bg-clip-text text-transparent truncate max-w-lg"
+                    [ngClass]="'bg-gradient-to-r from-' + eventColorStyle.titleTextColor + ' to-cyan-700'">
+                    {{ eventItem.title }}
+                </h3>
+                <p class="text-gray-700 text-lg sm:text-lg leading-relaxed whitespace-pre-line truncate max-w-lg">
+                    {{ eventItem.content }}
+                </p>
+            </div>
+        </div>
+    </div>
+</article>
+
+
+<app-event-modal
+  [eventItem]="eventItem"
+  [eventColorStyle]="eventColorStyle"
+  ></app-event-modal>
+
+

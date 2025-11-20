@@ -1,0 +1,26 @@
+<section class="relative overflow-hidden">
+    <app-background-pattern></app-background-pattern>
+      <div class="relative w-full max-w-7xl mx-auto px-4 py-5">
+      <h2 class="text-3xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+          <span class="bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">Catálogo de Datos</span>
+      </h2>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-emerald-700 mt-5 mb-5">{{providerItem.name}}</h2>
+    </div>
+  </section>
+<section class="relative w-full max-w-7xl mx-auto px-4 py-5">   
+  <div class="relative mb-10">
+    <div class="relative mb-5">
+      <app-back-button></app-back-button>
+    </div>
+    <mat-accordion multi>
+      <div *ngFor="let t of providerTableList"
+      class="mb-2">
+        <app-provider-table-item
+        class="accordion-component-style"
+        [providerTableItem]="t"
+        ></app-provider-table-item>
+      </div>
+      
+    </mat-accordion>
+  </div>
+</section>

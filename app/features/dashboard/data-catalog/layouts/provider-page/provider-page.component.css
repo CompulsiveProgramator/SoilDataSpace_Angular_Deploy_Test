@@ -1,0 +1,5 @@
+/*con ng-deep se inyecta el estilo en los hijos*/
+.noticias-grid ::ng-deep .mat-grid-list-wrapper {
+    /* Centra los elementos de la última fila */
+    justify-content: center;
+}

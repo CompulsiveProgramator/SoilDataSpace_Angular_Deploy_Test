@@ -1,0 +1,192 @@
+<header class="bg-white/90 shadow-sm sticky top-0 z-50">
+	<div class="flex justify-between h-16 px-5">
+		<a aria-label="Soil DataSpace home" class="flex items-center group">
+			<img src="assets/logo.png" class="h-full object-contain py-2">
+			<div class="object-contain">
+				<h1 class="text-sm sm:text-lg font-bold text-gray-900 leading-none whitespace-nowrap overflow-hidden text-ellipsis">Soil DataSpace</h1>
+        		<p class="text-[10px] sm:text-xs text-gray-500 whitespace-nowrap overflow-hidden text-ellipsis">Espacio de datos de suelos</p>
+			</div>
+		</a>
+
+		<div class="flex h-full"
+		 *ngIf="screenSize!=ScreenSizes.LAPTOP">
+			<!-- Nav vista móvil -->
+			<div
+				id="mobileMenu"
+				*ngIf="openMenu"
+				class="fixed top-16 bottom-0 left-0 right-0 bg-white/95 backdrop-blur border-t shadow-md z-40 animate-slideDown overflow-y-auto overscroll-contain touch-pan-y max-h-96"			>
+				<nav class="flex flex-col px-6 py-4 space-y-3 text-sm" aria-label="Principal móvil">
+					<!-- Inicio -->
+					<a (click)="closeBurgerMenu()" [routerLink]="['/home']" class="hover:text-blue-600 font-medium">Inicio</a>
+
+					<!-- Proyecto -->
+					<div>
+						<p class="font-medium text-gray-800">Proyecto</p>
+						<div class="ml-4 mt-1 space-y-1">
+							<a (click)="closeBurgerMenu()" [routerLink]="['/project/objective']" class="block text-gray-700 hover:text-blue-600">¿Qué es Soil Data Space?</a>
+							<a (click)="closeBurgerMenu()" [routerLink]="['/project/team']" class="block text-gray-700 hover:text-blue-600">Equipo</a>
+							<a (click)="closeBurgerMenu()" [routerLink]="['/project/partners']" class="block text-gray-700 hover:text-blue-600">Socios</a>
+							<a (click)="closeBurgerMenu()" [routerLink]="['/project/funding']" class="block text-gray-700 hover:text-blue-600">Financiación</a>
+						</div>
+					</div>
+
+					<!-- Novedades -->
+					<div>
+						<p class="font-medium text-gray-800">Novedades</p>
+						<div class="ml-4 mt-1 space-y-1">
+							<a (click)="closeBurgerMenu()" [routerLink]="['/latest/news']" class="block text-gray-700 hover:text-blue-600">Noticias</a>
+							<a (click)="closeBurgerMenu()" [routerLink]="['/latest/events']" class="block text-gray-700 hover:text-blue-600">Eventos</a>
+							<a (click)="closeBurgerMenu()" [routerLink]="['/latest/videos']" class="block text-gray-700 hover:text-blue-600">Videos</a>
+						</div>
+					</div>
+
+					<!-- Publicaciones -->
+					<div>
+						<p class="font-medium text-gray-800">Publicaciones</p>
+						<div class="ml-4 mt-1 space-y-1">
+							<a (click)="closeBurgerMenu()" [routerLink]="['/publishing/congresses']" class="block text-gray-700 hover:text-blue-600">Congresos</a>
+							<a (click)="closeBurgerMenu()" [routerLink]="['/publishing/articles']" class="block text-gray-700 hover:text-blue-600">Artículos</a>
+						</div>
+					</div>
+
+					<!-- Contacto -->
+					<a (click)="closeBurgerMenu()" [routerLink]="['/contact']" class="font-medium text-gray-800 hover:text-blue-600">Contacto</a>
+
+					<!-- Panel de control -->
+					 <!--
+					<div *ngIf="isLoggedIn">
+						<p class="font-medium text-gray-800">Panel de control</p>
+						<div class="ml-4 mt-1 space-y-1">
+							<a (click)="closeBurgerMenu()" [routerLink]="['dashboard/use-cases']" class="block text-gray-700 hover:text-blue-600">Casos de uso</a>
+							<a (click)="closeBurgerMenu()" [routerLink]="['dashboard/data-catalog']" class="block text-gray-700 hover:text-blue-600">Catálogo de datos</a>
+						</div>
+					</div>-->
+				</nav>
+			</div>
+
+			<div class="flex items-center">
+				<!-- Botón hamburguesa -->
+				<button
+					id="burgerMenuButton"
+					(click)="toggleMenu()"
+					class="py-2 rounded hover:bg-gray-100 transition"
+					aria-label="Abrir menú"
+				>
+					<svg *ngIf="!openMenu" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+						d="M4 6h16M4 12h16M4 18h16" />
+					</svg>
+					<svg *ngIf="openMenu" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+						d="M6 18L18 6M6 6l12 12" />
+					</svg>
+				</button>
+
+				<app-login></app-login>
+			</div>
+		</div>
+		<div class="flex h-full"
+		*ngIf="screenSize==ScreenSizes.LAPTOP">
+			<!-- Nav vista escritorio -->
+			<nav 
+			class="flex items-center gap-6" aria-label="Principal">
+				<a [routerLink]="['/home']" class="nav-link text-sm font-medium hover:text-blue-600">Inicio</a>
+				<!-- Dropdown para Proyecto -->
+				<div  class="group relative h-full flex">
+					<button
+						class="relative nav-link text-sm font-medium group-hover:text-blue-600 flex items-center focus:outline-none">
+						Proyecto
+						<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
+							viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+						</svg>
+					</button>
+
+					<!-- Menú desplegable -->
+					<div
+						class="absolute top-full left-1/2 -translate-x-1/2 w-40 border-t-blue-600 border-t-4 bg-white border border-gray-200 rounded-b-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+						<a [routerLink]="['/project/objective']"
+							class="block px-4 py-2 text-sm hover:bg-gray-200">¿Qué es Soil Data Space?</a>
+						<a [routerLink]="['/project/team']"
+							class="block px-4 py-2 text-sm hover:bg-gray-200">Equipo</a>
+						<a [routerLink]="['/project/partners']"
+							class="block px-4 py-2 text-sm hover:bg-gray-200">Socios</a>
+						<a [routerLink]="['/project/funding']"
+							class="block px-4 py-2 text-sm hover:bg-gray-200">Financiación</a>
+					</div>
+				</div>
+				<!-- Dropdown para Novedades -->
+				<div  class="group relative h-full flex">
+					<button
+						class="relative nav-link text-sm font-medium group-hover:text-blue-600 flex items-center focus:outline-none">
+						Novedades
+						<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
+							viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+						</svg>
+					</button>
+
+					<!-- Menú desplegable -->
+					<div
+						class="absolute top-full left-1/2 -translate-x-1/2 w-40 border-t-blue-600 border-t-4 bg-white border border-gray-200 rounded-b-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+						<a [routerLink]="['/latest/news']"
+							class="block px-4 py-2 text-sm hover:bg-gray-200">Noticias</a>
+						<a [routerLink]="['/latest/events']"
+							class="block px-4 py-2 text-sm hover:bg-gray-200">Eventos</a>
+						<a [routerLink]="['/latest/videos']"
+							class="block px-4 py-2 text-sm hover:bg-gray-200">Videos</a>
+					</div>
+				</div>
+
+				<!-- Dropdown para Publicaciones -->
+				<div  class="group relative h-full flex">
+					<button
+						class="relative nav-link text-sm font-medium group-hover:text-blue-600 flex items-center focus:outline-none">
+						Publicaciones
+						<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
+							viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+						</svg>
+					</button>
+
+					<!-- Menú desplegable -->
+					<div
+						class="absolute top-full left-1/2 -translate-x-1/2 w-40 border-t-blue-600 border-t-4 bg-white border border-gray-200 rounded-b-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+						<a [routerLink]="['/publishing/congresses']"
+							class="block px-4 py-2 text-sm hover:bg-gray-200">Congresos</a>
+						<a [routerLink]="['/publishing/articles']"
+							class="block px-4 py-2 text-sm hover:bg-gray-200">Artículos</a>
+					</div>
+				</div>
+
+				<a [routerLink]="['/contact']" class="nav-link text-sm font-medium hover:text-blue-600">Contacto</a>
+
+				<!-- Panel de control -->
+				<!--
+				<div *ngIf="isLoggedIn"  
+					class="group relative h-full flex">
+					<button
+						class="relative nav-link text-sm font-medium group-hover:text-blue-600 flex items-center focus:outline-none">
+						Panel de control
+						<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
+							viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+						</svg>
+					</button>-->
+
+					<!-- Menú desplegable -->
+					<!--
+					<div
+						class="absolute top-full left-1/2 -translate-x-1/2 w-40 border-t-blue-600 border-t-4 bg-white border border-gray-200 rounded-b-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+						<a [routerLink]="['dashboard/use-cases']"
+							class="block px-4 py-2 text-sm hover:bg-gray-200">Casos de uso</a>
+						<a [routerLink]="['dashboard/data-catalog']"
+							class="block px-4 py-2 text-sm rounded-b-lg hover:bg-gray-200">Catálogo de datos</a>
+					</div>
+				</div>-->
+
+				<app-login></app-login>
+			</nav>
+		</div>
+	</div>
+</header>

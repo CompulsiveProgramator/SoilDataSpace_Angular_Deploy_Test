@@ -1,0 +1,10 @@
+<mat-grid-list cols="3" rowHeight="1:0.85">
+    <mat-grid-tile class="bg-white p-1"
+    *ngFor="let p of providerList; let i = index">
+    <app-provider-card
+    [providerItem]="p"
+    [providerIndex]="i"
+    ></app-provider-card>
+    </mat-grid-tile>
+</mat-grid-list>
+

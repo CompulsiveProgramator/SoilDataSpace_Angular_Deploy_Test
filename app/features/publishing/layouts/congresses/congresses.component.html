@@ -1,0 +1,26 @@
+<section class="relative flex flex-col overflow-hidden pb-15">
+	<app-background-pattern></app-background-pattern>
+	<div class="sm:px-6 lg:px-8 relative text-center z-10 max-w-5xl mx-auto mt-10">
+      <div class="space-y-6 sm:space-y-8">
+      <div class="space-y-3 sm:space-y-4 stagger-appear">
+        <h2 class="text-3xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight"> 
+        	<span class="bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent"> Congresos </span>
+        </h2>
+		<button 
+			*ngIf="isCreateCongressVisible"
+			(click)="openCongressForm()"
+			id="open-create-news-modal" 
+			class="ml-4 inline-flex items-center justify-center px-4 py-2 sm:px-5 sm:py-1 text-sm font-semibold text-white bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+			>Crear congreso</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="relative w-full max-w-7xl mx-auto px-4 py-5">
+	<div class="relative mt-5 mb-5">
+	</div>
+	<div class="relative mb-10">
+		<app-congress-grid></app-congress-grid>
+	</div>
+</section>
+<app-congress-form></app-congress-form>

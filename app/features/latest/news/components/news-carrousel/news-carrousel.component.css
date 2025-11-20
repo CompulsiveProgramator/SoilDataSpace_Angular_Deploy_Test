@@ -1,0 +1,25 @@
+.hide-scrollbar {
+  /* Para Firefox */
+  scrollbar-width: none;
+  
+  /* Para Chrome, Safari y Edge */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.news-scroll-container {
+    display: flex;
+    gap: 1.5rem; /* Equivalente a 24px si 1rem = 16px */
+    
+    /* Clases: px-1 py-10 */
+    padding-left: 0.25rem; /* Equivalente a 4px */
+    padding-right: 0.25rem; /* Equivalente a 4px */
+    padding-top: 2.5rem; /* Equivalente a 40px */
+    padding-bottom: 2.5rem; /* Equivalente a 40px */
+    
+    scroll-snap-type: x mandatory;
+    align-items: stretch;
+
+    
+}

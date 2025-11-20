@@ -1,0 +1,7 @@
+/*Header donde está el botón de crear noticias*/
+   .header-noticias {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    width: 100%; 
+    }

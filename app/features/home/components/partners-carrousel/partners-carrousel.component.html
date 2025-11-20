@@ -1,0 +1,43 @@
+<section id="partners" class="py-10 bg-gradient-to-br from-gray-50 via-white to-emerald-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-6">
+        <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Ecosistema de colaboración</h2>
+        <p class="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
+          Consorcio público-privado liderado por la Universidad de Jaén con expertise académico, tecnológico y
+          sectorial.
+        </p>
+    </div>
+
+    <div class="relative">
+      <button
+        *ngIf="showLeftButton" 
+        (click)="scrollPartners(-1)"
+        class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white shadow-lg w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 transition"
+        aria-label="Anterior">
+        <i class="fa-solid fa-chevron-left text-gray-700"></i>
+      </button>
+
+      <div #partnersScroller
+        (scroll)="checkScroll()"
+        class="overflow-x-auto scroll-smooth snap-x snap-mandatory pb-1 hide-scrollbar">
+        <div id="partners-container" class="flex gap-3 sm:gap-4 py-10 hide-scrollbar">
+          
+          <!-- Aquí lo de los partners -->
+          <app-partners-card 
+            *ngFor="let partner of partnersDataList; let i = index"
+            [partnersData]="partner">
+          </app-partners-card>
+
+        </div>
+      </div>
+
+      <button
+        *ngIf="showRightButton"  
+        (click)="scrollPartners(1)"
+        class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white shadow-lg w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 transition"
+        aria-label="Siguiente">
+        <i class="fa-solid fa-chevron-right text-gray-700"></i>
+      </button>
+    </div>
+  </div>
+</section>

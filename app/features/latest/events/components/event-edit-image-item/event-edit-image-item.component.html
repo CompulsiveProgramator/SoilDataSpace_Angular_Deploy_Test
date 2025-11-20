@@ -1,0 +1,12 @@
+<div class="flex items-center">
+  
+  <p class="flex-grow text-gray-700 m-0 mr-4">{{getFileName()}}</p>
+  
+  <!-- IMPORTANTE: SI HAY UN BOTÓN EN UN FORMULARIO QUE NO VA A ENVIARLO, PONER type="button"-->
+  <button 
+    type="button"
+    class="text-gray-500 hover:text-gray-800 text-3xl font-bold leading-none z-10" 
+    (click)="onDelete()">
+    &times;
+  </button>
+</div>

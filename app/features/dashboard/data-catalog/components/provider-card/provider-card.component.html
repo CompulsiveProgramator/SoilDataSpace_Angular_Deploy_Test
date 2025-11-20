@@ -1,0 +1,39 @@
+<article 
+  class="group shrink-0 snap-start w-[400px] h-full relative rounded-3xl p-1 transition-transform duration-300 hover:scale-[1.04]"
+  [routerLink]="['provider/'+providerIndex]"
+  [ngClass]="'bg-gradient-to-r from-' + newsColorStyle.borderGradientColor + ' to-cyan-500'">
+  <div class="flex flex-col h-full rounded-[calc(1.5rem-4px)] bg-white/90 backdrop-blur-md overflow-hidden">
+    <!-- imagen -->
+    <div class="relative h-56 overflow-hidden bg-white">
+      <img
+      [src]="providerItem.logo" [alt]="providerItem.name" 
+      class="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-110" />
+
+      <span 
+        class="absolute top-3 left-3 inline-flex items-center gap-1 px-2 py-1 rounded-full text-[11px] font-semibold bg-white/90 shadow-sm"
+        [ngClass]="'text-' + newsColorStyle.categoryTextColor">
+
+        <!-- Listado de categorías, esta hecho para que vayan divididas por comas menos la ultima ESTOY MUY ORGULLOSO DE ESO :D-->
+        <div
+        *ngFor="let c of providerItem.categories; let isLast = last"> 
+            <p *ngIf="!isLast"
+            >{{ c }},</p> 
+            <p *ngIf="isLast"
+            >{{ c }}</p> 
+        </div>
+      </span>
+    </div>
+    <!-- Titulo y descripción -->
+    <div class="flex flex-col justify-between p-2 sm:p-4 flex-grow">
+      <div>
+        <h3 class="text-xl sm:text-2xl font-extrabold leading-snug bg-clip-text text-transparent"
+          [ngClass]="'bg-gradient-to-r from-' + newsColorStyle.titleTextColor + ' to-cyan-700'">
+          {{ providerItem.name }}
+        </h3>
+        <p class="text-gray-700 text-lg sm:text-lg leading-relaxed whitespace-pre-line">
+          {{ providerItem.description }}
+        </p>
+      </div>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,1 @@
+import{I as n,f as r}from"./chunk-XSD7VU42.js";var a=class t{actionSubject=new r;action$=this.actionSubject.asObservable();emitAction(o,e){this.actionSubject.next({colorToast:o,text:e})}static \u0275fac=function(e){return new(e||t)};static \u0275prov=n({token:t,factory:t.\u0275fac,providedIn:"root"})};export{a};

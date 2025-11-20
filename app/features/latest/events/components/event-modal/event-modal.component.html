@@ -1,0 +1,48 @@
+
+<div *ngIf="isVisible" 
+  class="modal-backdrop"
+  (mousedown)="closeModal()">
+  <div 
+    (mousedown)="$event.stopPropagation()"
+    class="relative bg-white rounded-2xl shadow-2xl w-full max-w-3xl sm:max-w-4xl md:max-w-5xl 
+               overflow-hidden animate-fadeIn flex flex-col 
+               h-auto max-h-[90vh] sm:h-[85vh] 
+               overflow-y-auto mt-4 mb-4">
+    <button (click)="closeModal()" class="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-3xl font-bold leading-none z-10" id="close-modal">
+      <span class="relative flex items-center justify-center w-8 h-8 rounded-full bg-white shadow-md">
+      &times;
+      </span>
+    </button>
+    <app-image-carrousel
+    [imageList]="eventItem.images"
+    ></app-image-carrousel>
+    <!-- Parte con margen -->
+      <div class="p-6 sm:p-8 space-y-4">
+        <h2 class="text-2xl sm:text-3xl font-extrabold truncate max-w-4xl" [ngClass]="'text-' + eventColorStyle.titleTextColorModal">{{ eventItem.title }}</h2>
+        <p class="text-sm text-gray-500">{{ eventItem.date }}</p>
+        <p class="text-base sm:text-lg" style="white-space: pre-line">{{ eventItem.content }}</p>
+      </div>
+
+    <div
+    *ngIf="isEditEventVisible">
+      <button (click)="onEdit()"
+        id="edit-news"
+        class="absolute bottom-4 right-28 px-5 py-2 rounded-lg text-white font-semibold shadow-md 
+        bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 transition">
+        Editar
+      </button>
+      <button (click)="onDelete()"
+        id="delete-news"
+        class="absolute bottom-4 right-4 px-5 py-2 rounded-lg text-white font-semibold shadow-md 
+        bg-gradient-to-r from-red-600 to-red-800 hover:from-red-700 hover:to-red-900 transition">
+        Borrar
+      </button>
+    </div>
+
+  </div>
+</div>
+
+
+<app-event-edit-form
+  [eventItem]="eventItem">
+</app-event-edit-form>

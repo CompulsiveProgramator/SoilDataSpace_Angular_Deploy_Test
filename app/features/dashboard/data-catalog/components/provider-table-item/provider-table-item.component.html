@@ -1,0 +1,45 @@
+<mat-expansion-panel>
+    <mat-expansion-panel-header>
+        <mat-panel-title> {{providerTableItem.name}} </mat-panel-title>
+        <mat-panel-description> {{providerTableItem.description}} </mat-panel-description>
+    </mat-expansion-panel-header>
+        <p>{{providerTableItem.lisence}}</p>
+        <p>{{rowNumber}} fila(s)</p>
+        <!-- Tabla dinámica con material -->
+        <div 
+        class="mat-elevation-z8">
+        <!-- Si los datos están disponibles -->
+        <div *ngIf="providerTableItem.available">
+            <div style="overflow-x: auto;">
+                <table mat-table [dataSource]="dataSource">
+                    <!-- Columnas creadas dinámicamente-->
+                    <ng-container *ngFor="let column of displayedColumns;"
+                    matColumnDef="{{column}}">
+                        <th mat-header-cell *matHeaderCellDef>{{column}}</th>
+                        <td mat-cell *matCellDef="let element">{{element[column]}}</td>
+                    </ng-container>
+
+                    <!-- Filas -->
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </div>
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                            showFirstLastButtons
+                            aria-label="Select page of periodic elements">
+            </mat-paginator>
+        </div>
+        <!-- Si los datos no están disponibles -->
+        <div
+        *ngIf="!providerTableItem.available"
+        class=" mt-10 mb-10">
+            <span class="text-sm mb-10 text-gray-600">Los datos no están disponibles para la visualización.</span>   
+        </div>
+        </div>
+        <a 
+        *ngIf="providerTableItem.link"
+        [href]="providerTableItem.link"
+        class="nav-link text-l font-medium text-gray-700 hover:text-blue-600"
+        >Enlace a los datos <mat-icon style="vertical-align: middle;">open_in_new</mat-icon></a> 
+
+</mat-expansion-panel>

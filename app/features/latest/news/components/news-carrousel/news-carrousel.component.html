@@ -1,0 +1,38 @@
+<section id="news" class="bg-white relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="relative">
+      <button
+        *ngIf="showLeftButton"  
+        (click)="scrollNews(-1)"
+        class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white shadow-lg w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 transition"
+        aria-label="Anterior">
+        <i class="fa-solid fa-chevron-left text-gray-700"></i>
+      </button>
+
+      <div #newsScroller
+        (scroll)="checkScroll()"
+        class="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 hide-scrollbar">
+        
+        <div id="news-container" class="news-scroll-container hide-scrollbar">
+          
+          <app-news-card 
+            *ngFor="let news of newsList; let i = index"
+            [newsItem]="news"
+            [newsIndex]="i"
+            [newsColorStyle]="getCardColor(i)">
+          </app-news-card>
+
+        </div>
+      </div>
+
+      <button
+        *ngIf="showRightButton"  
+        (click)="scrollNews(1)"
+        class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white shadow-lg w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 transition"
+        aria-label="Siguiente">
+        <i class="fa-solid fa-chevron-right text-gray-700"></i>
+      </button>
+    </div>
+  </div>
+</section>

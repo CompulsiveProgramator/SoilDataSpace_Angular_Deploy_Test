@@ -1,0 +1,1 @@
+import{Fb as n,J as t,Ub as e,ua as m,ub as r}from"./chunk-XSD7VU42.js";var i=class o{static \u0275fac=function(p){return new(p||o)};static \u0275mod=m({type:o});static \u0275inj=t({imports:[r,n,e]})};export{i as a};

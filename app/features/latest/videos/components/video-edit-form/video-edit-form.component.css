@@ -1,0 +1,34 @@
+/* Estilo para la capa de fondo (oscuro y cubre toda la pantalla) */
+.modal-backdrop {
+    position: fixed; /* Fija la posición relativa al viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente */
+    z-index: 999; /* Valor muy alto para estar encima de todo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.input-news {
+    /* border rounded px-3 py-2 */
+    border: 1px solid #d1d5db; /* border (color gris claro por defecto) */
+    border-radius: 0.25rem;    /* rounded */
+    padding: 0.5rem 0.75rem;   /* px-3 py-2 */
+    width: 100%;               /* Asegura que ocupe todo el ancho del formulario */
+    box-sizing: border-box;    /* Importante para el padding */
+    transition: box-shadow 0.2s, border-color 0.2s; /* Para la animación del focus */
+}
+
+.input-news-high {
+    /* border rounded px-3 py-2 */
+    border: 1px solid #d1d5db; /* border (color gris claro por defecto) */
+    border-radius: 0.25rem;    /* rounded */
+    padding: 0.5rem 0.75rem;   /* px-3 py-2 */
+    width: 100%; 
+    box-sizing: border-box;    /* Importante para el padding */
+    transition: box-shadow 0.2s, border-color 0.2s; /* Para la animación del focus */
+}

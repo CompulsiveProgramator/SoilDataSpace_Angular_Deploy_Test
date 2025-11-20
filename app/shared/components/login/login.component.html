@@ -1,0 +1,84 @@
+<!-- Botón de login -->
+@if(logeado){
+	<div class="inline-block">
+        <div class="relative flex items-center gap-3 h-16">
+            <!-- Botón de perfil -->
+            <button
+                (click)="showProfileModal()"
+                class="user-button ml-4 inline-flex items-center justify-center px-4 py-2 sm:px-5 sm:py-1 text-sm font-semibold text-white bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+            >
+                <img
+                    src="assets/user.svg"
+                    alt="Usuario"
+                    class="w-6 h-6 mr-2 text-white fill-current invert"
+                />
+                <span class="font-medium text-white">{{ username }}</span>
+            </button>
+
+            <!-- Modal -->
+            <div
+                #profileModal
+                class="flex flex-col hidden absolute top-full right-0 mt-2 bg-gray-100 rounded-xl shadow-xl transition-all duration-200 ease-out transform origin-top block opacity-0 scale-95"
+            >
+
+                <a
+                    routerLink="/settings"
+                    (click)="clickOnCloseProfileModal()"
+                    class="text-right flex items-center justify-end whitespace-nowrap px-4 py-2 rounded-lg transition-all duration-200 hover:bg-emerald-50 text-emerald-700 font-medium gap-2 border border-transparent hover:border-emerald-200"
+                >
+                    <i class="fa-solid fa-gear text-emerald-600"></i>
+                    Ajustes
+                </a>
+
+                <button
+                    (click)="closeSession()"
+                    class="text-right flex items-center justify-end whitespace-nowrap px-4 py-2 rounded-lg transition-all duration-200 hover:bg-red-50 text-red-700 font-medium gap-2 border border-transparent hover:border-red-200"
+                >
+                    <i class="fa-solid fa-right-from-bracket text-red-600"></i>
+                    Cerrar sesión
+                </button>
+            </div>
+        </div>
+	</div>
+}@else{
+    <button #loginBtnHeader id="loginBtnHeader"
+        class="ml-4 inline-flex items-center justify-center px-4 py-2 sm:px-5 sm:py-1 text-sm font-semibold text-white bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+        (click)="startLoginProcess()"
+        >Iniciar Sesión
+    </button>
+}
+
+<!-- Modal de Iniciar Sesión -->
+<div #loginModal 
+    (mousedown)="clickOnCloseLoginModal()"
+    id="loginModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-[9999] h-screen">
+    <div 
+    (mousedown)="$event.stopPropagation()"
+    class="bg-white rounded-xl shadow-xl w-96 p-6 relative">
+        <!-- Botón cerrar -->
+        <button #closeLoginModal id="closeLoginModal" (mousedown)="clickOnCloseLoginModal()" class="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-3xl font-bold leading-none z-10" id="close-modal">&times;</button>
+
+        <h2 class="text-xl font-bold mb-4 text-gray-900">Iniciar Sesión</h2>
+
+        <form #loginForm="ngForm" id="loginForm" class="flex flex-col gap-4" (ngSubmit)="loginRequest()">
+            <input type="text" ngModel name="username" placeholder="Usuario" required
+                    autocomplete="username"
+                    class="input-login" />
+
+            <input type="password" ngModel name="password" placeholder="Contraseña" required
+                    autocomplete="current-password"
+                    class="input-login" />
+
+            <button type="submit"
+                    class="w-full sm:w-auto inline-flex items-center justify-center px-4 py-2 sm:px-5 sm:py-1 text-sm font-semibold text-white bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                Entrar
+            </button>
+            <p #loginMessage id="loginMessage" class="text-sm text-red-600 mt-2 hidden"></p>
+        </form>
+    </div>
+</div>
+
+<!-- Toast para notificaciones de inicio/cierre sesión -->
+<div #toast id="toast" class="fixed top-[69px] left-1/2 transform -translate-x-1/2 px-6 py-3 rounded-lg shadow-lg opacity-0 transition-all duration-500 ease-in-out w-80 text-center z-50 pointer-events-none text-white">
+    <span #toastMessage id="toastMessage">miau</span>
+</div>

@@ -1,0 +1,178 @@
+app/
+├── e2e/ # Pruebas end-to-end (Cypress o Playwright)
+│ ├── cypress.config.ts
+│ ├── fixtures/
+│ │ └── example.json
+│ ├── support/
+│ │ ├── commands.ts
+│ │ └── e2e.ts
+│ └── tests/
+│ └── login.e2e.spec.ts
+├── src/
+│ ├── assets/
+│ │ ├── icons/
+│ │ ├── images/
+│ │ └── translations/
+│ │ ├── en.json
+│ │ └── es.json
+│ ├── environments/
+│ │ ├── environment.ts
+│ │ ├── environment.prod.ts
+│ │ └── environment.staging.ts
+│ ├── app/
+│ │ ├── core/ # CORE MODULE (Singletons globales)
+│ │ │ ├── guards/
+│ │ │ │ ├── auth.guard.ts
+│ │ │ │ └── role.guard.ts
+│ │ │ ├── interceptors/
+│ │ │ │ ├── auth.interceptor.ts
+│ │ │ │ ├── error.interceptor.ts
+│ │ │ │ └── loading.interceptor.ts
+│ │ │ ├── services/
+│ │ │ │ ├── api.service.ts # Base para peticiones HTTP
+│ │ │ │ ├── auth.service.ts # Autenticación y tokens
+│ │ │ │ ├── user-context.service.ts # Info del usuario actual
+│ │ │ │ ├── config.service.ts # Configuración global (APP_INITIALIZER)
+│ │ │ │ └── logger.service.ts # Logging centralizado
+│ │ │ ├── interceptors.index.ts
+│ │ │ ├── core.module.ts
+│ │ │ └── index.ts
+│ │ ├── shared/ # SHARED MODULE (componentes, pipes, etc.)
+│ │ │ ├── components/
+│ │ │ │ ├── header/
+│ │ │ │ │ ├── header.component.ts
+│ │ │ │ │ ├── header.component.html
+│ │ │ │ │ └── header.component.scss
+│ │ │ │ ├── footer/
+│ │ │ │ │ ├── footer.component.ts
+│ │ │ │ │ ├── footer.component.html
+│ │ │ │ │ └── footer.component.scss
+│ │ │ │ ├── carousel/
+│ │ │ │ │ ├── carousel.component.ts
+│ │ │ │ │ ├── carousel.component.html
+│ │ │ │ │ └── carousel.component.scss
+│ │ │ │ ├── button/
+│ │ │ │ ├── modal/
+│ │ │ │ └── loading-spinner/
+│ │ │ ├── directives/
+│ │ │ │ └── click-outside.directive.ts
+│ │ │ ├── pipes/
+│ │ │ │ ├── date-format.pipe.ts
+│ │ │ │ └── truncate.pipe.ts
+│ │ │ ├── models/
+│ │ │ │ ├── api-response.model.ts
+│ │ │ │ └── pagination.model.ts
+│ │ │ ├── shared.module.ts
+│ │ │ └── index.ts
+│ │ ├── features/ # FEATURES MODULES (una por dominio o página)
+│ │ │ ├── home/
+│ │ │ │ ├── components/
+│ │ │ │ │ └── hero-section/
+│ │ │ │ ├── containers/
+│ │ │ │ │ └── home-page.component.ts/html/scss
+│ │ │ │ ├── services/
+│ │ │ │ │ └── home.service.ts
+│ │ │ │ ├── models/
+│ │ │ │ │ └── home.model.ts
+│ │ │ │ ├── home-routing.module.ts
+│ │ │ │ └── home.module.ts
+│ │ │ ├── auth/
+│ │ │ │ ├── pages/
+│ │ │ │ │ ├── login/
+│ │ │ │ │ │ ├── login.component.ts/html/scss
+│ │ │ │ │ ├── register/
+│ │ │ │ │ │ ├── register.component.ts/html/scss
+│ │ │ │ │ └── forgot-password/
+│ │ │ │ │ ├── forgot-password.component.ts/html/scss
+│ │ │ │ ├── services/
+│ │ │ │ │ └── auth.service.ts
+│ │ │ │ ├── models/
+│ │ │ │ │ └── user.model.ts
+│ │ │ │ ├── auth-routing.module.ts
+│ │ │ │ └── auth.module.ts
+│ │ │ ├── news/
+│ │ │ │ ├── components/
+│ │ │ │ │ ├── news-card/
+│ │ │ │ │ └── news-carousel/
+│ │ │ │ ├── containers/
+│ │ │ │ │ ├── news-list.component.ts/html/scss
+│ │ │ │ │ └── news-detail.component.ts/html/scss
+│ │ │ │ ├── services/
+│ │ │ │ │ └── news.service.ts
+│ │ │ │ ├── models/
+│ │ │ │ │ └── news.model.ts
+│ │ │ │ ├── news-routing.module.ts
+│ │ │ │ └── news.module.ts
+│ │ │ ├── companies/
+│ │ │ │ ├── components/
+│ │ │ │ ├── containers/
+│ │ │ │ ├── services/
+│ │ │ │ │ └── companies.service.ts
+│ │ │ │ ├── models/
+│ │ │ │ │ └── company.model.ts
+│ │ │ │ ├── companies-routing.module.ts
+│ │ │ │ └── companies.module.ts
+│ │ │ ├── products/
+│ │ │ │ ├── product-list/
+│ │ │ │ │ ├── product-list.component.ts/html/scss
+│ │ │ │ ├── product-detail/
+│ │ │ │ │ ├── product-detail.component.ts/html/scss
+│ │ │ │ ├── services/
+│ │ │ │ │ └── products.service.ts
+│ │ │ │ ├── models/
+│ │ │ │ │ └── product.model.ts
+│ │ │ │ ├── products-routing.module.ts
+│ │ │ │ └── products.module.ts
+│ │ │ └── dashboard/ # ejemplo de feature interna para admins
+│ │ │ ├── components/
+│ │ │ ├── containers/
+│ │ │ ├── services/
+│ │ │ ├── dashboard-routing.module.ts
+│ │ │ └── dashboard.module.ts
+│ │ ├── state/ # Estado global (NgRx / Akita / SignalStore)
+│ │ │ ├── reducers/
+│ │ │ │ └── index.ts
+│ │ │ ├── actions/
+│ │ │ ├── effects/
+│ │ │ └── selectors/
+│ │ ├── utils/
+│ │ │ ├── date.utils.ts
+│ │ │ ├── storage.utils.ts
+│ │ │ └── array.utils.ts
+│ │ ├── styles/
+│ │ │ ├── _variables.scss
+│ │ │ ├── _mixins.scss
+│ │ │ └── themes/
+│ │ │ ├── dark.scss
+│ │ │ └── light.scss
+│ │ ├── app-routing.module.ts
+│ │ ├── app.component.ts
+│ │ ├── app.component.html
+│ │ ├── app.component.scss
+│ │ └── app.module.ts
+│ ├── index.html
+│ └── main.ts
+├── libs/ # (Opcional para monorepos/Nx)
+│ ├── ui/
+│ ├── data-access/
+│ ├── auth/
+│ └── utils/
+├── docs/
+│ ├── ARCHITECTURE.md
+│ ├── DECISIONS.md
+│ ├── API_CONTRACTS.md
+│ └── ONBOARDING.md
+├── .github/
+│ └── workflows/
+│ ├── ci.yml
+│ └── cd.yml
+├── docker/
+│ ├── Dockerfile
+│ └── docker-compose.yml
+├── .eslintrc.js
+├── .prettierrc
+├── jest.config.js
+├── tsconfig.json
+├── angular.json
+├── package.json
+└── README.md

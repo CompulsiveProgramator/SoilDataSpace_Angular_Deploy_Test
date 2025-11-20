@@ -1,0 +1,137 @@
+<!-- tarjeta pequeña -->
+<article
+*ngIf="cardType===cardTypes.SMALL"
+(click)="showModal()"
+class="group shrink-0 snap-start w-[380px] relative rounded-3xl p-1 transition-transform duration-300 hover:scale-[1.04] shadow-lg"
+[ngClass]="'bg-gradient-to-r from-' + newsColorStyle.borderGradientColor + ' to-cyan-500'">
+    <div class="flex flex-col h-full rounded-[calc(1.5rem-4px)] bg-white/90 backdrop-blur-md overflow-hidden">
+        <div class="relative h-56 overflow-hidden flex-shrink-0">
+            <img
+            [src]="finalImage" [alt]="newsItem.title" class="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-110" />
+            <span class="absolute top-3 left-3 inline-flex items-center gap-1 px-2 py-1 rounded-full text-[11px] font-semibold bg-white/90 shadow-sm"
+            [ngClass]="'text-' + newsColorStyle.categoryTextColor">
+            <span class="w-2 h-2 rounded-full animate-ping"
+                [ngClass]="'bg-' + newsColorStyle.categoryAnimationColor"></span> 
+            {{ newsItem.category }}
+            </span>
+        </div>
+        <div class="flex flex-col justify-between p-4 flex-grow">
+            <div>
+                <h3 class="text-xl sm:text-2xl font-extrabold leading-snug bg-clip-text text-transparent truncate max-w-lg"
+                    [ngClass]="'bg-gradient-to-r from-' + newsColorStyle.titleTextColor + ' to-cyan-700'">
+                    {{ newsItem.title }}
+                </h3>
+                <p class="text-gray-700 text-lg sm:text-lg leading-relaxed whitespace-pre-line truncate max-w-lg">
+                    {{ newsItem.description }}
+                </p>
+                </div>
+                <div class="mt-3">
+                <a *ngIf="showButton" 
+                    [href]="newsItem.link" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    onclick="event.stopPropagation()"
+                    class="inline-flex items-center gap-2 px-3 py-2 rounded-lg text-white text-sm font-semibold transition"
+                    [ngClass]="'bg-' + newsColorStyle.buttonColor">
+                    {{ finalButtonText }} 
+                    <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</article>
+
+<!-- tarjeta Mediana -->
+<article
+*ngIf="cardType===cardTypes.MEDIUM"
+(click)="showModal()"
+class="group shrink-0 snap-start w-[580px] h-[275px]  relative rounded-3xl p-1 transition-transform duration-300 hover:scale-[1.04] shadow-lg"
+[ngClass]="'bg-gradient-to-r from-' + newsColorStyle.borderGradientColor + ' to-cyan-500'">
+    <div class="flex flex-col h-full rounded-[calc(1.5rem-4px)] bg-white/90 backdrop-blur-md overflow-hidden">
+        <div class="relative h-36 overflow-hidden flex-shrink-0">
+            <img
+            [src]="finalImage" [alt]="newsItem.title" class="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-110" />
+            <span class="absolute top-3 left-3 inline-flex items-center gap-1 px-2 py-1 rounded-full text-[11px] font-semibold bg-white/90 shadow-sm"
+            [ngClass]="'text-' + newsColorStyle.categoryTextColor">
+            <span class="w-2 h-2 rounded-full animate-ping"
+                [ngClass]="'bg-' + newsColorStyle.categoryAnimationColor"></span> 
+            {{ newsItem.category }}
+            </span>
+        </div>
+        <div class="flex flex-col justify-between p-4 flex-grow">
+            <div>
+                <h3 class="text-xl sm:text-2xl font-extrabold leading-snug bg-clip-text text-transparent truncate max-w-lg"
+                    [ngClass]="'bg-gradient-to-r from-' + newsColorStyle.titleTextColor + ' to-cyan-700'">
+                    {{ newsItem.title }}
+                </h3>
+                <p class="text-gray-700 text-lg sm:text-lg leading-relaxed whitespace-pre-line truncate max-w-lg">
+                    {{ newsItem.description }}
+                </p>
+                </div>
+                <div class="mt-1">
+                <a *ngIf="showButton" 
+                    [href]="newsItem.link" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    onclick="event.stopPropagation()"
+                    class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-white text-sm font-semibold transition"
+                    [ngClass]="'bg-' + newsColorStyle.buttonColor">
+                    {{ finalButtonText }} 
+                    <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</article>
+
+<!-- tarjeta GRANDE -->
+<article
+*ngIf="cardType===cardTypes.BIG"
+(click)="showModal()"
+class="group shrink-0 snap-start w-[580px] h-[580px]  relative rounded-3xl p-1 transition-transform duration-300 hover:scale-[1.04] shadow-lg"
+[ngClass]="'bg-gradient-to-r from-' + newsColorStyle.borderGradientColor + ' to-cyan-500'">
+    <div class="flex flex-col h-full rounded-[calc(1.5rem-4px)] bg-white/90 backdrop-blur-md overflow-hidden">
+        <div class="relative h-105 overflow-hidden flex-shrink-0">
+            <img
+            [src]="finalImage" [alt]="newsItem.title" class="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-110" />
+            <span class="absolute top-3 left-3 inline-flex items-center gap-1 px-2 py-1 rounded-full text-[11px] font-semibold bg-white/90 shadow-sm"
+            [ngClass]="'text-' + newsColorStyle.categoryTextColor">
+            <span class="w-2 h-2 rounded-full animate-ping"
+                [ngClass]="'bg-' + newsColorStyle.categoryAnimationColor"></span> 
+            {{ newsItem.category }}
+            </span>
+        </div>
+        <div class="flex flex-col justify-between p-4 flex-grow">
+            <div>
+                <h3 class="text-xl sm:text-2xl font-extrabold leading-snug bg-clip-text text-transparent truncate max-w-lg"
+                    [ngClass]="'bg-gradient-to-r from-' + newsColorStyle.titleTextColor + ' to-cyan-700'">
+                    {{ newsItem.title }}
+                </h3>
+                <p class="text-gray-700 text-lg sm:text-lg leading-relaxed whitespace-pre-line truncate max-w-lg">
+                    {{ newsItem.description }}
+                </p>
+                </div>
+                <div class="mt-3">
+                <a *ngIf="showButton" 
+                    [href]="newsItem.link" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    onclick="event.stopPropagation()"
+                    class="inline-flex items-center gap-2 px-3 py-2 rounded-lg text-white text-sm font-semibold transition"
+                    [ngClass]="'bg-' + newsColorStyle.buttonColor">
+                    {{ finalButtonText }} 
+                    <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</article>
+
+<app-news-modal
+  id="news_modal"
+  [newsIndex]="newsIndex"
+  [newsItem]="newsItem"
+  [newsColorStyle]="newsColorStyle"
+  [finalImage]="finalImage"
+  [finalButtonText]="finalButtonText"
+  ></app-news-modal>
