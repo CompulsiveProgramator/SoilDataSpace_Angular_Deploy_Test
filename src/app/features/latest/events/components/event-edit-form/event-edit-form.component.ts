@@ -37,6 +37,7 @@ export class EventEditFormComponent {
   ngOnInit(): void {
     this.isVisible = false;
     this.errorActive = false;
+    console.log(this.eventItem);
   }
 
    //-- Métodos privados
@@ -120,7 +121,7 @@ export class EventEditFormComponent {
     const formValidation = this.eventService.formValidation(this.eventForm,this.fileTypes)
     if (formValidation.isValid && (this.selectedFiles||this.fileNames) && this.fileNames.length>0){
       this.eventService.editEvent( await this.eventService.parseFormDataToEventInterface(this.eventForm,this.selectedFiles));
-      //this.closeModal()
+      this.closeModal()
     } else {
       if(!formValidation.isValid){
         //Si falla la validación del formulario propia o la del objeto newsform devuelve el error
