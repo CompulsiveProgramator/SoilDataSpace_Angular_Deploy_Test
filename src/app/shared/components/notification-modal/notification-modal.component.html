@@ -1,0 +1,23 @@
+<div
+  *ngIf="visible"
+  class="fixed top-0 left-0 w-screen h-screen bg-black/40 z-[1000]"
+>
+  <div
+    class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
+           bg-white rounded-lg p-6 min-w-[320px] max-w-[90%] text-center shadow-lg
+           animate-fade-in"
+    [ngClass]="{
+      'border-2 border-blue-500 text-gray-800': type === 'message',
+      'border-2 border-red-500 text-red-700': type === 'error'
+    }"
+  >
+    <h2 class="text-xl font-semibold mb-2">{{ title }}</h2>
+    <p class="mb-4 text-base leading-relaxed">{{ message }}</p>
+    <button
+      class="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-600 transition"
+      (click)="close()"
+    >
+      Cerrar
+    </button>
+  </div>
+</div>

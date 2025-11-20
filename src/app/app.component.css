@@ -1,0 +1,194 @@
+   /* Base */
+   html {
+       scroll-behavior: smooth;
+   }
+
+   body {
+       font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+   }
+
+   /* Utilidades personalizadas */
+   .hover-glow {
+       transition: all .3s cubic-bezier(.4, 0, .2, 1);
+   }
+
+   .hover-glow:hover {
+       transform: translateY(-4px);
+       box-shadow: 0 25px 50px -12px rgba(0, 0, 0, .25);
+   }
+
+   .card-hover {
+       transition: all .3s ease-out;
+   }
+
+   .card-hover:hover {
+       transform: translateY(-8px);
+       box-shadow:
+           0 20px 25px -5px rgba(0, 0, 0, .1),
+           0 10px 10px -5px rgba(0, 0, 0, .04);
+   }
+
+   .stagger-appear {
+       animation: stagger .6s ease-out forwards;
+   }
+
+   @keyframes stagger {
+       0% {
+           opacity: 0;
+           transform: translateY(20px);
+       }
+
+       100% {
+           opacity: 1;
+           transform: translateY(0);
+       }
+   }
+
+   /* Menos movimiento si el usuario lo prefiere */
+   @media (prefers-reduced-motion: reduce) {
+
+       .hover-glow,
+       .card-hover,
+       .stagger-appear {
+           transition: none !important;
+           animation: none !important;
+       }
+   }
+
+   /* Scroller de socios (ocultar scrollbar) */
+   #partners-scroller {
+       -ms-overflow-style: none;
+       scrollbar-width: none;
+   }
+
+   #partners-scroller::-webkit-scrollbar {
+       display: none;
+   }
+
+   /* Clases para sustituir estilos inline */
+   .delay-1s {
+       animation-delay: 1s;
+   }
+
+   .delay-2s {
+       animation-delay: 2s;
+   }
+
+   html {
+       scroll-behavior: smooth;
+   }
+
+   body {
+       font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+   }
+
+   .hover-glow {
+       transition: all .3s cubic-bezier(.4, 0, .2, 1);
+   }
+
+   .hover-glow:hover {
+       transform: translateY(-4px);
+       box-shadow: 0 25px 50px -12px rgba(0, 0, 0, .25);
+   }
+
+   .card-hover {
+       transition: all .3s ease-out;
+   }
+
+   .card-hover:hover {
+       transform: translateY(-8px);
+       box-shadow: 0 20px 25px -5px rgba(0, 0, 0, .1), 0 10px 10px -5px rgba(0, 0, 0, .04);
+   }
+
+   .stagger-appear {
+       animation: stagger .6s ease-out forwards;
+   }
+
+   /*header donde está el botón de noticias*/
+   .header-noticias {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    width: 100%; 
+    margin-bottom: 20px; 
+    }
+
+   @keyframes stagger {
+       0% {
+           opacity: 0;
+           transform: translateY(20px);
+       }
+
+       100% {
+           opacity: 1;
+           transform: translateY(0);
+       }
+   }
+
+   /* Menos movimiento en móvil o si el usuario lo prefiere */
+   @media (prefers-reduced-motion: reduce) {
+
+       .hover-glow,
+       .card-hover,
+       .stagger-appear {
+           transition: none !important;
+           animation: none !important;
+       }
+   }
+
+   /* Difuminado lateral para el carrusel de socios */
+   #partners-scroller {
+       --fade-size: 28px;
+       /* ancho del difuminado */
+       --fade-l: var(--fade-size);
+       --fade-r: var(--fade-size);
+
+       /* Fades a izquierda y derecha */
+       -webkit-mask-image: linear-gradient(to right,
+               transparent 0,
+               black var(--fade-l),
+               black calc(100% - var(--fade-r)),
+               transparent 100%);
+       mask-image: linear-gradient(to right,
+               transparent 0,
+               black var(--fade-l),
+               black calc(100% - var(--fade-r)),
+               transparent 100%);
+   }
+
+   #partners-scroller::-webkit-scrollbar {
+       display: none;
+   }
+
+   /* Peek con máscara: se ve “media tarjeta” entrando/saliendo */
+   #partners-scroller {
+       -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+       mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+   }
+
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+.input-noticia {
+    /* border rounded px-3 py-2 */
+    border: 1px solid #d1d5db; /* border (color gris claro por defecto) */
+    border-radius: 0.25rem;    /* rounded */
+    padding: 0.5rem 0.75rem;   /* px-3 py-2 */
+    width: 100%;               /* Asegura que ocupe todo el ancho del formulario */
+    box-sizing: border-box;    /* Importante para el padding */
+    transition: box-shadow 0.2s, border-color 0.2s; /* Para la animación del focus */
+}
+
+.input-noticia-alto {
+    /* border rounded px-3 py-2 */
+    border: 1px solid #d1d5db; /* border (color gris claro por defecto) */
+    border-radius: 0.25rem;    /* rounded */
+    padding: 0.5rem 0.75rem;   /* px-3 py-2 */
+    width: 100%; 
+    box-sizing: border-box;    /* Importante para el padding */
+    transition: box-shadow 0.2s, border-color 0.2s; /* Para la animación del focus */
+}

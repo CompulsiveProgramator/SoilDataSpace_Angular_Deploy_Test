@@ -1,0 +1,83 @@
+<div *ngIf="isVisible" 
+  class="modal-backdrop"
+  (mousedown)="closeModal()"> <!--Uso mousedown porque click se activa cuando se levanta el click y eso da toc-->
+  <div 
+    (mousedown)="$event.stopPropagation()"
+    class="relative bg-white rounded-2xl shadow-2xl w-full max-w-3xl sm:max-w-4xl md:max-w-5xl 
+               overflow-hidden animate-fadeIn flex flex-col 
+               h-auto max-h-[90vh] sm:h-[85vh] 
+               overflow-y-auto mt-4 mb-4">
+    <button (click)="closeModal()" class="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-3xl font-bold leading-none z-10" id="close-modal">
+      <span class="relative flex items-center justify-center w-8 h-8 rounded-full bg-white shadow-md">
+      &times;
+      </span>
+    </button>
+
+    <div class="flex-grow overflow-y-auto text-gray-700 leading-relaxed">
+      <!-- Cuando no está en modo landscape, se ve la imagen total-->
+    <div 
+      *ngIf="screenSize!=ScreenSizes.LANDSCAPE" 
+      class="flex-shrink-0 h-80 sm:h-96 md:h-[400px] overflow-hidden relative -mt-0">
+      <img [src]="finalImage" [alt]="newsItem.title" class="w-full h-full object-cover object-center transition-transform duration-300">
+      <span class="absolute top-3 left-3 inline-flex items-center gap-1 px-3 py-1 rounded-full text-[12px] font-semibold bg-white/90 shadow-sm"
+            [ngClass]="'text-' + newsColorStyle.categoryTextColorModal">
+        <span class="w-2 h-2 rounded-full animate-ping" [ngClass]="'bg-' + newsColorStyle.categoryAnimationColorModal"></span> 
+        {{ newsItem.category }}
+      </span>
+    </div>
+    <!-- Cuando SÍ está en modo landscape, se ve la imagen total cuando está en un rango de píxeles ESTO ES MUCHO TRABAJO PERO MERECE LA PENA -->
+    <div *ngIf="screenSize==ScreenSizes.LANDSCAPE">
+      <div
+      *appMatchMedia = "{ min: 1000 }"
+      class="flex-shrink-0 h-80 sm:h-96 md:h-[400px] overflow-hidden relative -mt-0">
+        <img
+        [src]="finalImage" [alt]="newsItem.title" class="w-full h-full object-cover object-center transition-transform duration-300">
+        <span class="absolute top-3 left-3 inline-flex items-center gap-1 px-3 py-1 rounded-full text-[12px] font-semibold bg-white/90 shadow-sm"
+              [ngClass]="'text-' + newsColorStyle.categoryTextColorModal">
+          <span class="w-2 h-2 rounded-full animate-ping" [ngClass]="'bg-' + newsColorStyle.categoryAnimationColorModal"></span> 
+          {{ newsItem.category }}
+        </span>
+      </div>
+    </div>
+    <!-- Parte con margen -->
+      <div class="p-6 sm:p-8 space-y-4">
+        <h2 class="text-2xl sm:text-3xl font-extrabold truncate max-w-4xl" [ngClass]="'text-' + newsColorStyle.titleTextColorModal">{{ newsItem.title }}</h2>
+        <p class="text-sm text-gray-500">{{ newsItem.date }} | {{ newsItem.author }}</p>
+        <p class="text-base sm:text-lg">{{ newsItem.description }}</p>
+        <p class="text-base sm:text-lg" style="white-space: pre-line">{{ newsItem.content }}</p>
+        <!-- El botón desparece automáticamente con ngIf-->
+        <a *ngIf="newsItem.link" 
+          [href]="newsItem.link" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          id="news-link-modal" 
+          class="inline-flex items-center gap-2 mt-4 px-4 py-2 rounded-lg text-white font-semibold transition"
+          [ngClass]="'bg-' + newsColorStyle.buttonColor">
+          {{ finalButtonText }} <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+        </a>
+      </div>
+    </div>
+
+    <div
+    *ngIf="isDeleteNewsVisible">
+      <button (click)="onEdit()"
+        id="edit-news"
+        class="absolute bottom-4 right-28 px-5 py-2 rounded-lg text-white font-semibold shadow-md 
+        bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 transition">
+        Editar
+      </button>
+      <button (click)="onDelete()"
+        id="delete-news"
+        class="absolute bottom-4 right-4 px-5 py-2 rounded-lg text-white font-semibold shadow-md 
+        bg-gradient-to-r from-red-600 to-red-800 hover:from-red-700 hover:to-red-900 transition">
+        Borrar
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<app-news-edit-form
+  [newsItem]="newsItem"
+  [newsIndex]="newsIndex">
+</app-news-edit-form>

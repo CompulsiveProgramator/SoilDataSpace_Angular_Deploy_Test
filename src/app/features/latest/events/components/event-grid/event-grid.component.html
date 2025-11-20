@@ -1,0 +1,96 @@
+<!-- VERSIÓN DE PC -->
+<div *ngIf="screenSize==ScreenSizes.LAPTOP">
+    <div *ngIf="latestEvents && latestEvents.length > 0">
+        <mat-grid-list cols="4" rowHeight="1:1">
+            <!-- Primera noticia -->
+            <mat-grid-tile 
+            *ngIf="latestEvents[0]"
+            [colspan]="2"
+            [rowspan]="2">
+                <!-- OJO, se pasa la imagen de miniatura por aquí para evitar errores de asincroína -->
+                <app-event-card
+                [eventItem]="latestEvents[0]"
+                [thumbnailImage]="latestEvents[0].images[0]"
+                [eventColorStyle]="getCardColor(0)"
+                [cardType]="cardTypes.BIG"
+                ></app-event-card>
+            </mat-grid-tile>
+            <!-- Siguientes dos -->
+            <mat-grid-tile
+            *ngIf="latestEvents[1]"
+            [colspan]="2"
+            [rowspan]="1">
+                <app-event-card
+                [eventItem]="latestEvents[1]"
+                [thumbnailImage]="latestEvents[1].images[0]"
+                [eventColorStyle]="getCardColor(1)"
+                [cardType]="cardTypes.MEDIUM"
+                ></app-event-card>
+            </mat-grid-tile>
+            <mat-grid-tile
+            *ngIf="latestEvents[2]"
+            [colspan]="2"
+            [rowspan]="1">
+                <app-event-card
+                [eventItem]="latestEvents[2]"
+                [thumbnailImage]="latestEvents[2].images[0]"
+                [eventColorStyle]="getCardColor(2)"
+                [cardType]="cardTypes.MEDIUM"
+                ></app-event-card>
+            </mat-grid-tile>
+        </mat-grid-list>
+        <!-- Resto de noticias-->
+        <div *ngIf="moreEvents && moreEvents.length > 0">
+            <mat-grid-list cols="3" rowHeight="1:1">
+                <mat-grid-tile
+                *ngFor="let event of moreEvents; let i = index" 
+                [colspan]="1"
+                [rowspan]="1">
+                    <app-event-card
+                    [eventItem]="event"
+                    [thumbnailImage]="event.images[0]"
+                    [eventColorStyle]="getCardColor(i)"
+                    [cardType]="cardTypes.SMALL"
+                    ></app-event-card>
+                </mat-grid-tile>
+            </mat-grid-list>    
+        </div>
+        
+    </div>
+    
+</div>
+
+<!-- VERSIÓN DE TABLET y HORIZONTAL -->
+ <div *ngIf="(screenSize==ScreenSizes.TABLET||screenSize==ScreenSizes.LANDSCAPE) && eventList && eventList.length > 0">
+    <mat-grid-list cols="2" rowHeight="1:1.1">
+        <div *ngFor="let event of eventList; let i = index">
+            <mat-grid-tile 
+            [colspan]="1"
+            [rowspan]="1">
+                <app-event-card
+                [eventItem]="event"
+                [thumbnailImage]="event.images[0]"
+                [eventColorStyle]="getCardColor(i)"
+                [cardType]="cardTypes.SUPER_SMALL"
+                ></app-event-card>
+            </mat-grid-tile>
+        </div>
+    </mat-grid-list>
+</div>
+<!-- VERSIÓN DE MÓVIL VERTICAL -->
+ <div *ngIf="screenSize==ScreenSizes.PORTRAIT && eventList && eventList.length > 0">
+    <mat-grid-list cols="1" rowHeight="1:1.05">
+        <div *ngFor="let event of eventList; let i = index">
+            <mat-grid-tile 
+            [colspan]="1"
+            [rowspan]="1">
+                <app-event-card
+                [eventItem]="event"
+                [thumbnailImage]="event.images[0]"
+                [eventColorStyle]="getCardColor(i)"
+                [cardType]="cardTypes.SUPER_SMALL"
+                ></app-event-card>
+            </mat-grid-tile>
+        </div>
+    </mat-grid-list>
+</div>

@@ -1,0 +1,49 @@
+<!-- Versión de PC -->
+<div *ngIf="screenSize!=ScreenSizes.PORTRAIT">
+  <div *ngIf="imageList.length > 1"
+  class="keen-slider" #sliderRef>
+    <div     
+    *ngFor="let image of imageList" 
+    class="keen-slider__slide number-slide1">
+    <img  
+      [src]="getImage(image)"
+      class="w-full h-full object-cover object-center transition-transform duration-300">
+    </div>
+  </div>
+
+  <div *ngIf="imageList.length == 1"
+  class="keen-slider">
+    <div     
+    *ngFor="let image of imageList" 
+    class="keen-slider__slide number-slide1">
+    <img  
+      [src]="getImage(image)"
+      class="w-full h-full object-cover object-center transition-transform duration-300">
+    </div>
+  </div>
+</div>
+
+<!-- Versión de Móvil -->
+ <div *ngIf="screenSize==ScreenSizes.PORTRAIT">
+  <div *ngIf="imageList.length > 1"
+  class="keen-slider" #sliderRef>
+    <div     
+    *ngFor="let image of imageList" 
+    class="keen-slider__slide number-slide2">
+    <img  
+      [src]="getImage(image)"
+      class="w-full h-full object-cover object-center transition-transform duration-300">
+    </div>
+  </div>
+
+  <div *ngIf="imageList.length == 1"
+  class="keen-slider">
+    <div     
+    *ngFor="let image of imageList" 
+    class="keen-slider__slide number-slide2">
+    <img  
+      [src]="getImage(image)"
+      class="w-full h-full object-cover object-center transition-transform duration-300">
+    </div>
+  </div>
+</div>

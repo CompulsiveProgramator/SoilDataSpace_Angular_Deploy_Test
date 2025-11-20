@@ -1,0 +1,51 @@
+<div *ngIf="isVisible"
+    (mousedown)="closeModal()"
+    class="modal-backdrop">
+    <div 
+    (mousedown)="$event.stopPropagation()"
+    class="relative bg-white rounded-2xl shadow-2xl w-full max-w-3xl sm:max-w-4xl md:max-w-5xl 
+               overflow-hidden animate-fadeIn flex flex-col 
+               h-auto max-h-[90vh] sm:h-[85vh] 
+               overflow-y-auto mt-4 mb-4">
+        <button class="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-3xl font-bold leading-none z-10" 
+        (click)="closeModal()">&times;</button>
+
+        <form [formGroup]="videoForm" id="news_form" class="flex flex-col gap-4 p-6"
+        (ngSubmit)="onSubmit()"> 
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-emerald-700 mb-8">Editar Vídeo</h2>
+            <p>*Título: </p><input type="text" formControlName="title" placeholder="Título del vídeo." required class="input-news" />
+            <p>Fecha: </p><input type="date" formControlName="date" placeholder="dd/mm/yyyy" class="input-news" />
+            <p>*Id del vídeo: </p>
+                        <p class="text-lg font-bold text-red-600 mt-2">En PC para videos normales:</p>
+            <p class="text-sm text-red-600">Hace falta copiar el ID del vídeo, no el enlace. El ID no contiene ni '=' ni '/', es el código que aparece al final en la URL.</p>
+            <p class="text-sm text-red-600">Por ejemplo, si la URL es: "https://www.youtube.com/watch?v=QDia3e12czc". Entonces el ID del vídeo es "QDia3e12czc".</p>
+            <img [src]="'assets/tutorial/tutorial_2.png'"/>
+            <p class="text-lg font-bold text-red-600 mt-2">En PC para shorts:</p>
+            <img [src]="'assets/tutorial/tutorial_1.png'"/>
+            <p class="text-lg font-bold text-red-600 mt-2">En móvil:</p>
+            <p class="text-sm text-red-600">Primero hay que copiar el enlace utilizando la opción de compartir.</p>
+            <div class="w-full inline-flex items-center justify-center">
+                <img [src]="'assets/tutorial/tutorial_3.png'" width="360"/>
+            </div>
+            <p class="text-sm text-red-600">Después, copiar el ID del vídeo.</p>
+            <p class="text-sm text-red-600">Por ejemplo, si la URL copiada desde móvil es: "https://youtu.be/QDia3e12czc?si=YagDCMWFiMe6kzUY". Entonces el ID del vídeo es "QDia3e12czc".</p>
+            <div class="w-full inline-flex items-center justify-center">
+                <img [src]="'assets/tutorial/tutorial_4.png'" width="360"/>
+            </div>
+            <span class="text-sm text-gray-600">Introduce el ID del vídeo:</span>
+            <input type="text" formControlName="url" placeholder="Ejemplo: E4WlUXrJgy4" required class="input-news"/>
+            <div class="flex gap-5 justify-start"> 
+                <p>*Short: </p>
+                <input type="checkbox" formControlName="ytShort"/>
+            </div>
+            <p *ngIf="errorActive"
+            id="errorMessage" 
+            class="text-sm text-red-600 mt-2">{{errorMessage}}</p>
+            
+            <button type="submit"
+                class="w-full inline-flex items-center justify-center px-4 py-2 sm:px-5 sm:py-10 text-xl font-semibold text-white bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 rounded-lg transition-all duration-300 transform hover:scale-102 hover:shadow-lg">
+                Editar Vídeo
+            </button>
+        </form>
+    </div>
+</div>

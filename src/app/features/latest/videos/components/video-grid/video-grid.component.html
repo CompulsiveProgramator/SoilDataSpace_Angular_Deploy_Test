@@ -1,0 +1,29 @@
+
+<!-- Primeros x videos -->
+<mat-grid-list [cols]="cols" [rowHeight]="rowHeight">
+    <mat-grid-tile
+    *ngFor="let v of latestVideos">
+    <app-video-card
+    [isMobile]="isMobile"
+    [videoItem]="v"
+    ></app-video-card>
+    </mat-grid-tile>
+</mat-grid-list>
+<!-- Resto de videos -->
+ <div *ngIf="moreVideos.length > 0">
+    <button
+    (click)="toggleMoreVideos()"
+    class="nav-link text-l font-medium text-gray-700 hover:text-blue-600 mb-5"
+    >{{ moreVideosVisible ? 'Ver menos' : 'Ver más'}} <mat-icon style="vertical-align: middle;">{{ moreVideosVisible ? 'arrow_drop_up' : 'arrow_drop_down'}}</mat-icon>  </button>
+ </div> 
+<mat-grid-list 
+    *ngIf="moreVideosVisible"
+    [cols]="cols" [rowHeight]="rowHeight">
+    <mat-grid-tile
+    *ngFor="let v of moreVideos">
+    <app-video-card
+    [isMobile]="isMobile"
+    [videoItem]="v"
+    ></app-video-card>
+    </mat-grid-tile>
+</mat-grid-list>

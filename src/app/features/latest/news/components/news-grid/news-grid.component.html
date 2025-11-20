@@ -1,0 +1,86 @@
+<!-- VERSIÓN DE PC -->
+<div *ngIf="screenSize==ScreenSizes.LAPTOP">
+    <div *ngIf="latestNews && latestNews.length > 0">
+        <mat-grid-list cols="4" rowHeight="1:1">
+            <!-- Primera noticia -->
+            <mat-grid-tile 
+            [colspan]="2"
+            [rowspan]="2">
+                <app-news-grid-card
+                [newsItem]="latestNews[0]"
+                [newsIndex]="getIndex(latestNews[0])"
+                [newsColorStyle]="getCardColor(0)"
+                [cardType]="cardTypes.BIG"
+                ></app-news-grid-card>
+            </mat-grid-tile>
+            <!-- Siguientes dos -->
+            <mat-grid-tile
+            [colspan]="2"
+            [rowspan]="1">
+                <app-news-grid-card
+                [newsItem]="latestNews[1]"
+                [newsIndex]="getIndex(latestNews[1])"
+                [newsColorStyle]="getCardColor(1)"
+                [cardType]="cardTypes.MEDIUM"
+                ></app-news-grid-card>
+            </mat-grid-tile>
+            <mat-grid-tile
+            [colspan]="2"
+            [rowspan]="1">
+                <app-news-grid-card
+                [newsItem]="latestNews[2]"
+                [newsIndex]="getIndex(latestNews[2])"
+                [newsColorStyle]="getCardColor(2)"
+                [cardType]="cardTypes.MEDIUM"
+                ></app-news-grid-card>
+            </mat-grid-tile>
+        </mat-grid-list>
+        <!-- Resto de noticias-->
+        <mat-grid-list cols="3" rowHeight="1:1">
+            <mat-grid-tile
+            *ngFor="let news of moreNews; let i = index" 
+            [colspan]="1"
+            [rowspan]="1">
+                <app-news-grid-card
+                [newsItem]="news"
+                [newsIndex]="getIndex(news)"
+                [newsColorStyle]="getCardColor(i)"
+                [cardType]="cardTypes.SMALL"
+                ></app-news-grid-card>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+    
+</div>
+<!-- VERSIÓN DE MÓVIL HORIZONTAL -->
+ <div *ngIf="screenSize==ScreenSizes.LANDSCAPE || screenSize==ScreenSizes.TABLET">
+    <mat-grid-list cols="1" rowHeight="1:0.6">
+        <div *ngFor="let news of newsList; let i = index">
+            <mat-grid-tile 
+            [colspan]="1"
+            [rowspan]="1">
+                <app-news-card
+                [newsItem]="news"
+                [newsIndex]="i"
+                [newsColorStyle]="getCardColor(i)"
+                ></app-news-card>
+            </mat-grid-tile>
+        </div>
+    </mat-grid-list>
+</div>
+<!-- VERSIÓN DE MÓVIL vertical -->
+ <div *ngIf="screenSize==ScreenSizes.PORTRAIT">
+    <mat-grid-list cols="1" rowHeight="1:1.05">
+        <div *ngFor="let news of newsList; let i = index">
+            <mat-grid-tile 
+            [colspan]="1"
+            [rowspan]="1">
+                <app-news-card
+                [newsItem]="news"
+                [newsIndex]="i"
+                [newsColorStyle]="getCardColor(i)"
+                ></app-news-card>
+            </mat-grid-tile>
+        </div>
+    </mat-grid-list>
+</div>

@@ -1,0 +1,66 @@
+<section class="relative flex flex-col overflow-hidden">
+    <app-background-pattern></app-background-pattern>
+    <div class="sm:px-6 lg:px-8 relative text-center z-10 max-w-5xl mx-auto mt-10">	
+		<div class="space-y-3 sm:space-y-4 stagger-appear pb-10 px-8">
+			<h2 class="text-3xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+				Contacto
+			</h2>
+			<p class="text-lg text-gray-700 text-center">
+				Rellene el siguiente formulario si tiene alguna consulta,<br>
+				y le responderemos lo antes posible:
+			</p>
+			<form #contactForm="ngForm" (ngSubmit)="sendEmail(contactForm)" class="max-w-md mx-auto bg-white shadow-xl rounded-2xl p-6 flex flex-col gap-4">
+				<div class="flex flex-col">
+					<label class="text-sm font-medium text-gray-600 mb-1">Nombre</label>
+					<input 
+					type="text"
+					name="name"
+					ngModel
+					required 
+					placeholder="Tu nombre"
+					class="p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+					/>
+				</div>
+
+				<div class="flex flex-col">
+					<label class="text-sm font-medium text-gray-600 mb-1">Email</label>
+					<input 
+					type="email"
+					name="email"
+					ngModel
+					required 
+					placeholder="tu@email.com"
+					class="p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+					/>
+				</div>
+
+				<div class="flex flex-col">
+					<label class="text-sm font-medium text-gray-600 mb-1">Consulta</label>
+					<textarea
+					name="message"
+					ngModel 
+					required
+					placeholder="Cuéntanos en qué podemos ayudarte"
+					rows="4"
+					class="p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition resize-none"
+					></textarea>
+				</div>
+
+				<button 
+					type="submit"
+					class="mt-2 bg-gradient-to-r from-emerald-600 to-cyan-600 text-white font-semibold py-3 rounded-xl hover:bg-blue-700 transition transform hover:-translate-y-0.5"
+					>
+					Enviar
+				</button>
+			</form>
+			<p class="text-lg text-gray-700">
+				O si lo deseas, puedes escribirnos directamente al correo <span class="cursor-pointer underline hover:text-blue-600">soildataspace&#64;ujaen.es</span>
+			</p>
+		</div>
+    </div>
+</section>
+
+<!-- Toast -->
+<div #toast id="toast" class="fixed top-[69px] left-1/2 transform -translate-x-1/2 px-6 py-3 rounded-lg shadow-lg opacity-0 transition-all duration-500 ease-in-out w-80 text-center z-50 pointer-events-none text-white">
+    <span #toastMessage id="toastMessage">Correo enviado correctamente.</span>
+</div>

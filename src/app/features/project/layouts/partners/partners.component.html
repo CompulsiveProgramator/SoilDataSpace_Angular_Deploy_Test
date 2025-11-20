@@ -1,0 +1,55 @@
+<section class="relative flex flex-col overflow-hidden pb-15">
+  <app-background-pattern></app-background-pattern>
+    <div class="p-5 relative text-center z-10 max-w-5xl mx-auto mt-10">
+      <div class="space-y-6 sm:space-y-8">
+      <div class="space-y-3 sm:space-y-4 stagger-appear">
+        <h2 class="text-3xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">Ecosistema de 
+        <span class="bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent"> colaboración </span>
+        </h2>
+        <p class="text-base sm:text-xl text-gray-700 text-justify">
+          Consorcio público-privado liderado por la Universidad de Jaén con expertise académico, tecnológico y sectorial.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+ <section class="relative w-full max-w-7xl mx-auto px-4 py-5">
+  <div class="relative mt-5 mb-5">
+  </div>
+  <!-- Versión PC -->
+  <div *ngIf="screenSize==ScreenSizes.LAPTOP"
+  class="relative mb-10">
+    <mat-grid-list cols="5" rowHeight="1:1">
+      <mat-grid-tile class="bg-white p-1"
+      *ngFor="let p of partnersDataList">
+      <app-partners-card
+      [partnersData]="p"
+      ></app-partners-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  <!-- Versión Tablet-->
+   <div *ngIf="screenSize==ScreenSizes.TABLET || screenSize==ScreenSizes.LANDSCAPE"
+   class="relative mb-10">
+    <mat-grid-list cols="2" rowHeight="1:0.6">
+      <mat-grid-tile class="bg-white p-1"
+      *ngFor="let p of partnersDataList">
+      <app-partners-card
+      [partnersData]="p"
+      ></app-partners-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  <!-- Versión Móvil vertical-->
+   <div *ngIf="screenSize==ScreenSizes.PORTRAIT"
+   class="relative mb-10">
+    <mat-grid-list cols="1" rowHeight="1:0.75">
+      <mat-grid-tile class="bg-white p-1"
+      *ngFor="let p of partnersDataList">
+      <app-partners-card
+      [partnersData]="p"
+      ></app-partners-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+ </section>

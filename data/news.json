@@ -1,0 +1,40 @@
+{
+  "news": [
+    {
+      "_id": { "$oid": "68e8e70ba5ad1a522ca57aa1" },
+      "title": "Publicamos los primeros conjuntos de datos FAIR sobre biodiversidad del suelo",
+      "date": "01/10/2025",
+      "author": "Carlos",
+      "category": "Datos abiertos",
+      "image": "assets/images/news/contratos.jpg",
+      "description": "Datos en formatos interoperables y alineados con los principios FAIR.",
+      "content": "Los conjuntos de datos sobre biodiversidad del suelo están disponibles públicamente siguiendo los principios FAIR, permitiendo su reutilización e integración con otros proyectos científicos.",
+      "link": "https://example.com/noticia-datos-fair",
+      "button_text": "Descargar"
+    },
+    {
+      "_id": { "$oid": "68e8e70ba5ad1a522ca57aa2" },
+      "title": "Soil DataSpace participa en la conferencia INSPIRE 2025",
+      "date": "28/09/2025",
+      "author": "Lucía",
+      "category": "Evento",
+      "image": "assets/images/news/contratos.jpg",
+      "description": "Presentamos avances en interoperabilidad geoespacial y estándares europeos.",
+      "content": "Durante la conferencia INSPIRE 2025 se presentaron los últimos avances del proyecto, destacando la interoperabilidad geoespacial y los estándares europeos aplicados a los datos de suelo.",
+      "link": "",
+      "button_text": "Saber más"
+    },
+    {
+      "_id": { "$oid": "68e8e70ba5ad1a522ca57aa3" },
+      "title": "Nuevo módulo de IA para detección de contaminación en suelos agrícolas",
+      "date": "20/09/2025",
+      "author": "Ana",
+      "category": "Innovación",
+      "image": "assets/images/news/contratos.jpg",
+      "description": "Modelos GeoAI para estimar niveles de contaminación en tiempo real.",
+      "content": "Se lanza un módulo de inteligencia artificial que permite la detección temprana de contaminación en suelos agrícolas, usando modelos de GeoAI y datos en tiempo real.",
+      "link": "",
+      "button_text": "Probar"
+    }
+  ]
+}

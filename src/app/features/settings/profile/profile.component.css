@@ -1,0 +1,5 @@
+button.active {
+	background-color: #d1fae5; /* emerald-100 */
+	color: #065f46; /* emerald-800 */
+	font-weight: 600;
+}
