@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/soil-data-space",
+            "outputPath": "dist/SoilDataSpace_Angular_Deploy_Test",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
